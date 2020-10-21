@@ -16,10 +16,19 @@ class swapiService {
     })
     .then((body) => {console.log(body)})
   }
+  getAllPeople() {
+    this.getResource('/people/')
+  }
+  getPerson(id) {
+    this.getResource(`/people/${id}`);
+  }
 }
 
 const apiService = new swapiService();
-apiService.getResource('/people/1/')
+apiService.getResource('/people/1/');
+apiService.getAllPeople();
+apiService.getPerson(1);
+apiService.getPerson(2);
 ReactDOM.render(
   <React.StrictMode>
     <App />
