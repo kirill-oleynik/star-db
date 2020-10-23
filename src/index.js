@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import './bootstrap.min.css';
-
+import App from './components/app';
 class swapiService {
   _apiBase = 'https://swapi.dev/api';
   async getResource(url) {
