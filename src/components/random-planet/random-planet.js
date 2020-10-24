@@ -9,12 +9,10 @@ export default class RandomPlanet extends Component {
     super();
     this.updatePlanet();
   }
+  onPlanetLoaded =(planet) => {this.setState({planet})};
+
   state = {
-    id: null,
-    name: null,
-    population: null,
-    rotationPeriod: null,
-    diameter: null
+    planet: {}
   }
   planetId(max){
     return Math.floor(Math.random() * Math.floor(max));
@@ -22,18 +20,10 @@ export default class RandomPlanet extends Component {
   updatePlanet(){
     const id = this.planetId(20);
     this.api.getPlanet(id)
-      .then(({ name, population, rotation_period, diameter }) => {
-        this.setState({
-          id: id,
-          name,
-          population,
-          diameter,
-          rotationPeriod: rotation_period
-        });
-      });
+    .then(this.onPlanetLoaded)
   }
   render() {
-    const {id,name,population,rotationPeriod,diameter}=this.state;
+    const{ planet: { id, name, population, rotationPeriod, diameter } } = this.state;
     return (
       <div className="random-planet jumbotron rounded">
         <img className="planet-image"
