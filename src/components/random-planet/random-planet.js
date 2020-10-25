@@ -9,7 +9,8 @@ export default class RandomPlanet extends Component {
 
   constructor() {
     super();
-    this.updatePlanet();
+    this.interval = setInterval(this.updatePlanet, 1500);
+    // clearInterval(this.interval);
   }
   onPlanetLoaded =(planet) => {this.setState({planet, loading: false})};
 
@@ -22,7 +23,7 @@ export default class RandomPlanet extends Component {
   planetId(max){
     return Math.floor(Math.random() * Math.floor(max));
   }
-  updatePlanet(){
+  updatePlanet = () => {
     const id = this.planetId(20);
     this.api.getPlanet(id)
     .then(this.onPlanetLoaded)

@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
+import ToggleRandomPlanetButton from '../toggle-random-planet-button';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
-
 import './app.css';
 
-const App = () => {
-  return (
+export default class App extends Component {
+  state  = {
+    randomPlanetVisible: false
+  }
+  handleRandomPlanetVisibilityToggleClick = () => {
+    this.setState(({ randomPlanetVisible }) => {
+      return {
+        randomPlanetVisible: !randomPlanetVisible
+      };
+    });
+  }
+  render() {
+    const { randomPlanetVisible } = this.state;
+   return(
     <div>
       <Header />
-      <RandomPlanet />
-
+     <ToggleRandomPlanetButton
+     state={randomPlanetVisible}
+     handleClick={this.handleRandomPlanetVisibilityToggleClick}
+     />
+     { randomPlanetVisible ? <RandomPlanet /> : null }
       <div className="row mb2">
         <div className="col-md-6">
           <ItemList />
@@ -23,6 +38,5 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+  }
+}
