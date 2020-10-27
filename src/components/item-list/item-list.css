@@ -1,7 +1,13 @@
+.item-list {
+  padding-bottom: 50px;
+}
 .item-list .list-group-item {
   cursor: pointer;
 }
 
 .item-list .list-group-item:hover {
   background-color: #444;
+}
+h4 {
+  text-decoration: underline;
 }
