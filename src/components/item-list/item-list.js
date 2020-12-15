@@ -1,16 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import './item-list.css';
-import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 
 export default class ItemList extends Component {
-  api = new SwapiService();
   state = {
     itemList: null
   };
   componentDidMount(){
-    // use params function
-    this.api.getAllPeople()
+    this.props.getData()
       .then((itemList)=>{
         this.setState({ itemList })
       })
