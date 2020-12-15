@@ -6,12 +6,17 @@ import ToggleRandomPlanetButton from '../toggle-random-planet-button';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 import ErrorButton from '../error-button';
+import ErrorIndicator from '../error-indicator';
 import './app.css';
 
 export default class App extends Component {
+  componentDidCatch(){
+    this.setState({ hasError: true })
+  }
   state  = {
     randomPlanetVisible: false,
-    selectedPersonId:null
+    selectedPersonId:null,
+    hasError:false
   }
   onSelectItem = (selectedPersonId) => {
     this.setState({selectedPersonId})
@@ -24,7 +29,8 @@ export default class App extends Component {
     });
   }
   render() {
-    const { randomPlanetVisible } = this.state;
+    const { randomPlanetVisible, hasError } = this.state;
+    if(hasError) { return(<ErrorIndicator />); }
    return(
     <div>
       <Header />
