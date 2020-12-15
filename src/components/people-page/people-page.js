@@ -15,7 +15,7 @@ export default class PeoplePage extends Component{
     return(
             <div className="row mb2">
         <div className="col-md-6">
-          <ItemList onSelectPerson={this.onSelectItem} />
+          <ItemList onSelectItem={this.onSelectItem} />
         </div>
         <div className="col-md-6">
           <PersonDetails personId={this.state.selectedPersonId} />

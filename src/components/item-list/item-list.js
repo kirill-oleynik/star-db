@@ -6,18 +6,19 @@ import Spinner from '../spinner';
 export default class ItemList extends Component {
   api = new SwapiService();
   state = {
-    peopleList: null
+    itemList: null
   };
   componentDidMount(){
+    // use params function
     this.api.getAllPeople()
-      .then((peopleList)=>{
-        this.setState({ peopleList })
+      .then((itemList)=>{
+        this.setState({ itemList })
       })
   }
   renderPerson =(person) => {
     const {id,name} = person;
     const handleClick=()=>{
-      this.props.onSelectPerson(id);
+      this.props.onSelectItem(id);
     }
     return(
         <li
@@ -31,9 +32,9 @@ export default class ItemList extends Component {
     );
   }
   render() {
-    const {peopleList} = this.state;
-    if(!peopleList){ return <Spinner /> }
-    const data = peopleList.map(this.renderPerson);
+    const {itemList} = this.state;
+    if(!itemList){ return <Spinner /> }
+    const data = itemList.map(this.renderPerson);
     return (
       <Fragment>
       <h4>Select Item: </h4>
