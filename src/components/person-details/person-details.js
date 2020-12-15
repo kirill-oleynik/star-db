@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './person-details.css';
 import SwapiService from '../../services/swapi-service';
+import Spinner from '../spinner';
 
 export default class PersonDetails extends Component {
   api=new SwapiService();
@@ -8,26 +9,30 @@ export default class PersonDetails extends Component {
     super();
   }
   state = {
-    person: null
+    person: null,
+    fetching: false
   };
   updatePerson(){
     const {personId} = this.props;
     if(!personId) { return };
+    this.setState({ fetching: true });
     this.api.getPerson(personId)
       .then((person) => {
-        this.setState({person});
+        this.setState({person, fetching: false});
       });
   }
   componentDidMount(){
     this.updatePerson();
   }
-  componentDidUpdate(prevProps){
-    if(prevProps.personId !== this.props.personid){
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.personId !== this.props.personId){
       this.updatePerson();
     }
+    if(this.state.fetching == prevState.fetching) { return; }
   }
   render(){
-    const { person } = this.state;
+    const { person, fetching } = this.state;
+    if(fetching) { return <Spinner /> };
     if(!person) {return ( <span>Nothing Selected</span> )}
     const {id,name,gender,eyeColor,birthYear} = person;
     return (

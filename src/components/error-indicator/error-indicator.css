@@ -1,0 +1,9 @@
+.error-indicator {
+  text-align: center;
+}
+.error-heading {
+  color: red;
+}
+.error-message {
+  color: grey;
+}
