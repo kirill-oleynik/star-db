@@ -8,6 +8,7 @@ import PersonDetails from '../person-details';
 import ErrorButton from '../error-button';
 import ErrorIndicator from '../error-indicator';
 import PeoplePage from '../people-page';
+import PlanetsPage from '../planets-page';
 import './app.css';
 
 export default class App extends Component {
@@ -42,6 +43,7 @@ export default class App extends Component {
      />
      <ErrorButton />
      <PeoplePage />
+     <PlanetsPage />
     </div>
   );
   }
