@@ -5,6 +5,7 @@ import RandomPlanet from '../random-planet';
 import ToggleRandomPlanetButton from '../toggle-random-planet-button';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
+import ErrorButton from '../error-button';
 import './app.css';
 
 export default class App extends Component {
@@ -31,6 +32,7 @@ export default class App extends Component {
      state={randomPlanetVisible}
      handleClick={this.handleRandomPlanetVisibilityToggleClick}
      />
+     <ErrorButton />
      { randomPlanetVisible ? <RandomPlanet /> : null }
       <div className="row mb2">
         <div className="col-md-6">
