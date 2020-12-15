@@ -20,6 +20,7 @@ export default class PeoplePage extends Component{
           <ItemList
             onSelectItem={this.onSelectItem}
             getData = {this.api.getAllPeople}
+            entity = 'Person'
           />
         </div>
         <div className="col-md-6">

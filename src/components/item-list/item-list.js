@@ -30,11 +30,12 @@ export default class ItemList extends Component {
   }
   render() {
     const {itemList} = this.state;
+    const{entity} = this.props;
     if(!itemList){ return <Spinner /> }
     const data = itemList.map(this.renderPerson);
     return (
       <Fragment>
-      <h4>Select Item: </h4>
+      <h4>Select {entity} :</h4>
       <ul className="item-list list-group">
       {data}
      </ul>

@@ -20,6 +20,7 @@ export default class PlanetsPage extends Component{
       <ItemList
         onSelectItem={this.onSelectItem}
       getData={this.api.getAllPlanets}
+      entity='Planet'
       />
       </div>
       <div className='col-md-6'>
