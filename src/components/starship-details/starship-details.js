@@ -1,2 +1,67 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './starship-details.css';
+import SwapiService from '../../services/swapi-service';
+import Spinner from '../spinner';
 
+export default class StarshipDetails extends Component {
+  api=new SwapiService();
+  constructor(){
+    super();
+  }
+  state = {
+    starship: null,
+    fetching: false
+  };
+  updateStarship(){
+    const {starshipId} = this.props;
+    if(!starshipId) { return };
+    this.setState({ fetching: true });
+    this.api.getStarship(starshipId)
+      .then((starship) => {
+        this.setState({starship, fetching: false});
+      });
+  }
+  componentDidMount(){
+    this.updateStarship();
+  }
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.starshipId !== this.props.starshipId){
+      this.updateStarship();
+    }
+    if(this.state.fetching == prevState.fetching) { return; }
+  }
+  render(){
+    const { starship, fetching } = this.state;
+    if(fetching) { return <Spinner /> };
+    if(!starship) {return ( <span>Nothing Selected</span> )}
+    const {id,name,model,manufacturer,cargoCapacity,passengers, crew} = starship;
+    return (
+      <div className="person-details card">
+        <img className="person-image"
+          src={`https://starwars-visualguide.com/assets/img/starships/${id}.jpg`} />
+
+        <div className="card-body">
+          <h4>{name}</h4>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              <span className="term">Model</span>
+              <span>{model}</span>
+            </li>
+            <li className="list-group-item">
+              <span className="term">Manufacturer</span>
+              <span>{manufacturer}</span>
+            </li>
+            <li className="list-group-item">
+              <span className="term">Passengers</span>
+              <span>{passengers}</span>
+            </li>
+            <li className="list-group-item">
+              <span className="term">Crew</span>
+              <span>{crew}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
+}
