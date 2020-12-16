@@ -25,7 +25,10 @@ export default class StarshipsPage extends Component {
           />
         </div>
         <div className="col-md-6">
-          <StarshipDetails entityId={this.state.selectedStarshipId} />
+          <StarshipDetails
+            entityId={this.state.selectedStarshipId}
+            getData={this.api.getStarship}
+          />
         </div>
       </div>
     );

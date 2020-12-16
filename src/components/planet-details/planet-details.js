@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './planet-details.css';
-import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 
 export default class PlanetDetails extends Component {
-  api=new SwapiService();
   constructor(){
     super();
   }
@@ -13,10 +11,10 @@ export default class PlanetDetails extends Component {
     fetching: false
   };
   updatePlanet(){
-    const {entityId} = this.props;
+    const {entityId, getData} = this.props;
     if(!entityId) { return };
     this.setState({ fetching: true });
-    this.api.getPlanet(entityId)
+    getData(entityId)
       .then((entity) => {
         this.setState({entity, fetching: false});
       });

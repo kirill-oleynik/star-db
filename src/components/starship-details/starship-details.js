@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './starship-details.css';
-import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 
 export default class StarshipDetails extends Component {
-  api=new SwapiService();
   constructor(){
     super();
   }
@@ -13,10 +11,10 @@ export default class StarshipDetails extends Component {
     fetching: false
   };
   updateStarship(){
-    const {entityId} = this.props;
+    const {entityId, getData} = this.props;
     if(!entityId) { return };
     this.setState({ fetching: true });
-    this.api.getStarship(entityId)
+    getData(entityId)
       .then((entity) => {
         this.setState({entity, fetching: false});
       });

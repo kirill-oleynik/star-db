@@ -24,7 +24,10 @@ export default class PlanetsPage extends Component{
       />
       </div>
       <div className='col-md-6'>
-      <PlanetDetails entityId={selectedItemId} />
+      <PlanetDetails
+        entityId={selectedItemId}
+        getData={this.api.getPlanet}
+      />
       </div>
     </div>
     );
