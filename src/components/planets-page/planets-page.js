@@ -15,7 +15,7 @@ export default class PlanetsPage extends Component{
   render() {
     const {selectedItemId} = this.state;
     return(
-    <div className='row mb2'>
+    <div className='row mb2 planets-page'>
     <div className='col-md-6'>
       <ItemList
         onSelectItem={this.onSelectItem}

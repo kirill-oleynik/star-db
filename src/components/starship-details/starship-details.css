@@ -3,6 +3,7 @@
   margin-top: 1rem;
   flex-direction: row;
   padding: 1rem;
+  border-radius: 5px;
 }
 
 .starship-details .starship-image {

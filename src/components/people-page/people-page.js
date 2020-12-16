@@ -15,7 +15,7 @@ export default class PeoplePage extends Component{
 
   render(){
     return(
-            <div className="row mb2">
+            <div className="row mb2 people-page">
         <div className="col-md-6">
           <ItemList
             onSelectItem={this.onSelectItem}
