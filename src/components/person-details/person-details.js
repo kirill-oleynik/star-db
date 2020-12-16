@@ -9,32 +9,32 @@ export default class PersonDetails extends Component {
     super();
   }
   state = {
-    person: null,
+    entity: null,
     fetching: false
   };
   updatePerson(){
-    const {personId} = this.props;
-    if(!personId) { return };
+    const {entityId} = this.props;
+    if(!entityId) { return };
     this.setState({ fetching: true });
-    this.api.getPerson(personId)
-      .then((person) => {
-        this.setState({person, fetching: false});
+    this.api.getPerson(entityId)
+      .then((entity) => {
+        this.setState({entity, fetching: false});
       });
   }
   componentDidMount(){
     this.updatePerson();
   }
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.personId !== this.props.personId){
+    if(prevProps.entityId !== this.props.entityId){
       this.updatePerson();
     }
     if(this.state.fetching == prevState.fetching) { return; }
   }
   render(){
-    const { person, fetching } = this.state;
+    const { entity, fetching } = this.state;
     if(fetching) { return <Spinner /> };
-    if(!person) {return ( <span>Nothing Selected</span> )}
-    const {id,name,gender,eyeColor,birthYear} = person;
+    if(!entity) {return ( <span>Nothing Selected</span> )}
+    const {id,name,gender,eyeColor,birthYear} = entity;
     return (
       <div className="person-details card">
         <img className="person-image"

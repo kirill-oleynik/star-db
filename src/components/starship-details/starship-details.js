@@ -9,32 +9,32 @@ export default class StarshipDetails extends Component {
     super();
   }
   state = {
-    starship: null,
+    entity: null,
     fetching: false
   };
   updateStarship(){
-    const {starshipId} = this.props;
-    if(!starshipId) { return };
+    const {entityId} = this.props;
+    if(!entityId) { return };
     this.setState({ fetching: true });
-    this.api.getStarship(starshipId)
-      .then((starship) => {
-        this.setState({starship, fetching: false});
+    this.api.getStarship(entityId)
+      .then((entity) => {
+        this.setState({entity, fetching: false});
       });
   }
   componentDidMount(){
     this.updateStarship();
   }
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.starshipId !== this.props.starshipId){
+    if(prevProps.entityId !== this.props.entityId){
       this.updateStarship();
     }
     if(this.state.fetching == prevState.fetching) { return; }
   }
   render(){
-    const { starship, fetching } = this.state;
+    const { entity, fetching } = this.state;
     if(fetching) { return <Spinner /> };
-    if(!starship) {return ( <span>Nothing Selected</span> )}
-    const {id,name,model,manufacturer,cargoCapacity,passengers, crew} = starship;
+    if(!entity) {return ( <span>Nothing Selected</span> )}
+    const {id,name,model,manufacturer,cargoCapacity,passengers, crew} = entity;
     return (
       <div className="person-details card">
         <img className="person-image"

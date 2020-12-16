@@ -9,32 +9,32 @@ export default class PlanetDetails extends Component {
     super();
   }
   state = {
-    planet: null,
+    item: null,
     fetching: false
   };
   updatePlanet(){
-    const {planetId} = this.props;
-    if(!planetId) { return };
+    const {entityId} = this.props;
+    if(!entityId) { return };
     this.setState({ fetching: true });
-    this.api.getPlanet(planetId)
-      .then((planet) => {
-        this.setState({planet, fetching: false});
+    this.api.getPlanet(entityId)
+      .then((entity) => {
+        this.setState({entity, fetching: false});
       });
   }
   componentDidMount(){
     this.updatePlanet();
   }
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.planetId !== this.props.planetId){
+    if(prevProps.entityId !== this.props.entityId){
       this.updatePlanet();
     }
     if(this.state.fetching == prevState.fetching) { return; }
   }
   render(){
-    const { planet, fetching } = this.state;
+    const { entity, fetching } = this.state;
     if(fetching) { return <Spinner /> };
-    if(!planet) {return ( <span>Nothing Selected</span> )}
-    const {id,name,population,diameter,rotationPeriod} = this.state.planet;
+    if(!entity) {return ( <span>Nothing Selected</span> )}
+    const {id,name,population,diameter,rotationPeriod} = this.state.entity;
     return (
       <div className="person-details card">
         <img className="person-image"

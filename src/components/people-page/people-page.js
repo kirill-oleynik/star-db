@@ -24,7 +24,7 @@ export default class PeoplePage extends Component{
           />
         </div>
         <div className="col-md-6">
-          <PersonDetails personId={this.state.selectedPersonId} />
+          <PersonDetails entityId={this.state.selectedPersonId} />
         </div>
       </div>
     );

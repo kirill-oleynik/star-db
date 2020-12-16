@@ -24,7 +24,7 @@ export default class PlanetsPage extends Component{
       />
       </div>
       <div className='col-md-6'>
-      <PlanetDetails planetId={selectedItemId} />
+      <PlanetDetails entityId={selectedItemId} />
       </div>
     </div>
     );
