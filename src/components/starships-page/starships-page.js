@@ -3,6 +3,7 @@ import './starships-page.css';
 import ItemList from '../item-list';
 import StarshipDetails from '../starship-details';
 import SwapiService from '../../services/swapi-service';
+import Row from '../row';
 
 export default class StarshipsPage extends Component {
   api = new SwapiService();
@@ -27,15 +28,13 @@ export default class StarshipsPage extends Component {
     entityId={this.state.selectedStarshipId}
     getData={this.api.getStarship}/>;
 
+
+
     return(
-            <div className="row mb2 starship-page">
-        <div className="col-md-6">
-          { itemList }
-        </div>
-        <div className="col-md-6">
-          { itemDetails }
-        </div>
-      </div>
+    <Row
+      left={itemList}
+      right={itemDetails}
+    />
     );
   }
 }

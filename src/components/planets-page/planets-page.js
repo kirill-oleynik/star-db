@@ -3,6 +3,7 @@ import './planets-page.css';
 import ItemList from '../item-list';
 import PlanetDetails from '../planet-details';
 import SwapiService from '../../services/swapi-service';
+import Row from '../row';
 
 export default class PlanetsPage extends Component{
   api = new SwapiService();
@@ -27,16 +28,12 @@ export default class PlanetsPage extends Component{
     entityId={selectedItemId}
     getData={this.api.getPlanet} />;
 
+
     return(
-    <div className='row mb2 planets-page'>
-    <div className='col-md-6'>
-      { itemList }
-      </div>
-      <div className='col-md-6'>
-      { itemDetails }
-     />
-      </div>
-    </div>
+    <Row
+      left={itemList}
+      right={itemDetails}
+    />
     );
   }
 };

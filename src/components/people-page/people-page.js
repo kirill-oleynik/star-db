@@ -3,6 +3,7 @@ import './people-page.css';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 import SwapiService from '../../services/swapi-service';
+import Row from '../row';
 export default class PeoplePage extends Component{
   api = new SwapiService();
   state={
@@ -27,17 +28,11 @@ export default class PeoplePage extends Component{
     getData={this.api.getPerson}/>
 
 
-
-
-    return(
-            <div className="row mb2 people-page">
-        <div className="col-md-6">
-          { itemList }
-        </div>
-        <div className="col-md-6">
-          { itemDetails }
-        </div>
-      </div>
-    );
+      return(
+    <Row
+      left={itemList}
+      right={itemDetails}
+    />
+      );
   }
 }
