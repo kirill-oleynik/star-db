@@ -22,19 +22,20 @@ export default class PeoplePage extends Component{
                           getData = {this.api.getAllPeople}
                           entity = 'Person'
                           renderLabel={this.renderLabel}/>;
+    const itemDetails =  <PersonDetails
+    entityId={this.state.selectedPersonId}
+    getData={this.api.getPerson}/>
+
 
 
 
     return(
             <div className="row mb2 people-page">
         <div className="col-md-6">
-      { itemList }
+          { itemList }
         </div>
         <div className="col-md-6">
-          <PersonDetails
-            entityId={this.state.selectedPersonId}
-            getData={this.api.getPerson}
-          />
+          { itemDetails }
         </div>
       </div>
     );

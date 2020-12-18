@@ -23,9 +23,9 @@ export default class StarshipsPage extends Component {
     getData = {this.api.getAllStarships}
     entity = 'Starship'
     renderLabel={this.renderLabel}/>;
-
-
-
+    const itemDetails =  <StarshipDetails
+    entityId={this.state.selectedStarshipId}
+    getData={this.api.getStarship}/>;
 
     return(
             <div className="row mb2 starship-page">
@@ -33,10 +33,7 @@ export default class StarshipsPage extends Component {
           { itemList }
         </div>
         <div className="col-md-6">
-          <StarshipDetails
-            entityId={this.state.selectedStarshipId}
-            getData={this.api.getStarship}
-          />
+          { itemDetails }
         </div>
       </div>
     );
