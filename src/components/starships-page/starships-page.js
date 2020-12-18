@@ -14,6 +14,8 @@ export default class StarshipsPage extends Component {
     this.setState({selectedStarshipId})
   }
 
+  renderLabel =({ name, manufacturer }) => (`${name}i (${manufacturer})`);
+
   render(){
     return(
             <div className="row mb2 starship-page">
@@ -22,6 +24,7 @@ export default class StarshipsPage extends Component {
             onSelectItem={this.onSelectItem}
             getData = {this.api.getAllStarships}
             entity = 'Starship'
+            renderLabel={this.renderLabel}
           />
         </div>
         <div className="col-md-6">

@@ -12,18 +12,16 @@ export default class ItemList extends Component {
         this.setState({ itemList })
       })
   }
-  renderPerson =(person) => {
-    const {id,name} = person;
-    const handleClick=()=>{
-      this.props.onSelectItem(id);
-    }
+  renderItem =(item) => {
+    const label = this.props.renderLabel(item);
+    const {id,name} = item;
     return(
         <li
       key={id}
       className="list-group-item"
-      onClick={handleClick}
+      onClick={()=>{this.props.onSelectItem(id)}}
       >
-      {name}
+      {label}
         </li>
 
     );
@@ -32,7 +30,7 @@ export default class ItemList extends Component {
     const {itemList} = this.state;
     const{entity} = this.props;
     if(!itemList){ return <Spinner /> }
-    const data = itemList.map(this.renderPerson);
+    const data = itemList.map(this.renderItem);
     return (
       <Fragment>
       <h4>Select {entity} :</h4>

@@ -13,6 +13,8 @@ export default class PeoplePage extends Component{
     this.setState({selectedPersonId})
   }
 
+  renderLabel = ({ name, gender, birthYear }) => (`${name}, (${gender}) [${birthYear}]`);
+
   render(){
     return(
             <div className="row mb2 people-page">
@@ -21,6 +23,7 @@ export default class PeoplePage extends Component{
             onSelectItem={this.onSelectItem}
             getData = {this.api.getAllPeople}
             entity = 'Person'
+      renderLabel={this.renderLabel}
           />
         </div>
         <div className="col-md-6">

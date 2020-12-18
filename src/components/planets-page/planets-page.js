@@ -12,6 +12,9 @@ export default class PlanetsPage extends Component{
   onSelectItem = (selectedItemId) => {
     this.setState({ selectedItemId });
   };
+
+  renderLabel =({ name, population }) => (`${name} (${population})`);
+
   render() {
     const {selectedItemId} = this.state;
     return(
@@ -20,6 +23,7 @@ export default class PlanetsPage extends Component{
       <ItemList
         onSelectItem={this.onSelectItem}
       getData={this.api.getAllPlanets}
+            renderLabel={this.renderLabel}
       entity='Planet'
       />
       </div>
