@@ -16,15 +16,19 @@ export default class PeoplePage extends Component{
   renderLabel = ({ name, gender, birthYear }) => (`${name}, (${gender}) [${birthYear}]`);
 
   render(){
+
+      const itemList = <ItemList
+                          onSelectItem={this.onSelectItem}
+                          getData = {this.api.getAllPeople}
+                          entity = 'Person'
+                          renderLabel={this.renderLabel}/>;
+
+
+
     return(
             <div className="row mb2 people-page">
         <div className="col-md-6">
-          <ItemList
-            onSelectItem={this.onSelectItem}
-            getData = {this.api.getAllPeople}
-            entity = 'Person'
-      renderLabel={this.renderLabel}
-          />
+      { itemList }
         </div>
         <div className="col-md-6">
           <PersonDetails

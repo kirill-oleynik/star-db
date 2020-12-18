@@ -17,15 +17,20 @@ export default class StarshipsPage extends Component {
   renderLabel =({ name, manufacturer }) => (`${name}i (${manufacturer})`);
 
   render(){
+
+    const itemList = <ItemList
+    onSelectItem={this.onSelectItem}
+    getData = {this.api.getAllStarships}
+    entity = 'Starship'
+    renderLabel={this.renderLabel}/>;
+
+
+
+
     return(
             <div className="row mb2 starship-page">
         <div className="col-md-6">
-          <ItemList
-            onSelectItem={this.onSelectItem}
-            getData = {this.api.getAllStarships}
-            entity = 'Starship'
-            renderLabel={this.renderLabel}
-          />
+          { itemList }
         </div>
         <div className="col-md-6">
           <StarshipDetails
