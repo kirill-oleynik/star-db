@@ -3,6 +3,8 @@ import './people-page.css';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 import SwapiService from '../../services/swapi-service';
+import ErrorButton from '../error-button';
+import ErrorBoundry from '../error-boundry';
 import Row from '../row';
 export default class PeoplePage extends Component{
   api = new SwapiService();
@@ -30,8 +32,8 @@ export default class PeoplePage extends Component{
 
       return(
     <Row
-      left={itemList}
-      right={itemDetails}
+      left={<ErrorBoundry>{itemList}</ErrorBoundry>}
+      right={<ErrorBoundry>{itemDetails}</ErrorBoundry>}
     />
       );
   }

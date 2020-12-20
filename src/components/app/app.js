@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './app.css';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ToggleRandomPlanetButton from '../toggle-random-planet-button';
@@ -10,17 +10,14 @@ import ErrorIndicator from '../error-indicator';
 import PeoplePage from '../people-page';
 import PlanetsPage from '../planets-page';
 import StarshipsPage from '../starships-page';
-import './app.css';
+import ErrorBoundry from '../error-boundry';
 
 export default class App extends Component {
-  componentDidCatch(){
-    this.setState({ hasError: true })
-  }
+  // }
   state  = {
     randomPlanetVisible:true,
     selectedPersonId:null,
-    hasError:false
-  }
+  };
   onSelectItem = (selectedPersonId) => {
     this.setState({selectedPersonId})
   }
@@ -32,9 +29,9 @@ export default class App extends Component {
     });
   }
   render() {
-    const { randomPlanetVisible, hasError } = this.state;
-    if(hasError) { return(<ErrorIndicator />); }
+    const { randomPlanetVisible } = this.state;
    return(
+     <ErrorBoundry>
     <div id='Application'>
       <Header />
      { randomPlanetVisible ? <RandomPlanet /> : null }
@@ -47,6 +44,7 @@ export default class App extends Component {
      <PlanetsPage />
      <StarshipsPage />
     </div>
+     </ErrorBoundry>
   );
   }
 }

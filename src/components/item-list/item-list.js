@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './item-list.css';
 import Spinner from '../spinner';
+import ErrorBoundry from '../error-boundry';
 
 export default class ItemList extends Component {
   state = {
@@ -33,10 +34,12 @@ export default class ItemList extends Component {
     const data = itemList.map(this.renderItem);
     return (
       <Fragment>
+      <ErrorBoundry>
       <h4>Select {entity} :</h4>
       <ul className="item-list list-group">
       {data}
      </ul>
+      </ErrorBoundry>
       </Fragment>
     );
   }
