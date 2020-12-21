@@ -1,5 +1,6 @@
 export default class SwapiService {
   _apiBase = 'https://swapi.dev/api';
+  _imageBase = 'https://starwars-visualguide.com/assets/img/';
   _idRegExp = /\/([0-9]*)\/$/;
 
   getResource = async (url) => {
@@ -73,5 +74,7 @@ export default class SwapiService {
     return response.url.match(this._idRegExp)[1];
   };
 
-  getPersonImage = ({ id }) =>(`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`);
+getPersonImage = ({ id }) =>(`${this._imageBase}/characters/${id}.jpg`);
+getPlanetImage = ({ id }) =>(`${this._imageBase}/planets/${id}.jpg`);
+getStarshipImage = ({ id }) =>(`${this._imageBase}/starships/${id}.jpg`);
 }
