@@ -26,7 +26,7 @@ export default class PeoplePage extends Component{
                           entity = 'Person'
                           renderLabel={this.renderLabel}/>;
     const itemDetails =  <PersonDetails
-    entityId={this.state.selectedPersonId}
+    itemId={this.state.selectedPersonId}
     getData={this.api.getPerson}/>
 
 
