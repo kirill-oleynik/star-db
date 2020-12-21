@@ -27,7 +27,8 @@ export default class PeoplePage extends Component{
                           renderLabel={this.renderLabel}/>;
     const itemDetails =  <PersonDetails
     itemId={this.state.selectedPersonId}
-    getData={this.api.getPerson}/>
+    getData={this.api.getPerson}
+    getImageUrl={this.api.getPersonImage}/>
 
 
       return(

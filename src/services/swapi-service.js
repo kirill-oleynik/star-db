@@ -71,5 +71,7 @@ export default class SwapiService {
   }
   _extractId(response){
     return response.url.match(this._idRegExp)[1];
-  }
+  };
+
+  getPersonImage = ({ id }) =>(`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`);
 }

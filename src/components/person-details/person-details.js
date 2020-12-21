@@ -10,15 +10,16 @@ export default class PersonDetails extends Component {
   }
   state = {
     item: null,
-    fetching: false
+    fetching: false,
+    image: null
   };
   updatePerson(){
-    const {itemId, getData} = this.props;
+    const {itemId, getData, getImageUrl} = this.props;
     if(!itemId) { return };
     this.setState({ fetching: true });
     getData(itemId)
       .then((item) => {
-        this.setState({item, fetching: false});
+        this.setState({item, fetching: false, image: getImageUrl(item)});
       });
   }
   componentDidMount(){
@@ -31,14 +32,14 @@ export default class PersonDetails extends Component {
     if(this.state.fetching == prevState.fetching) { return; }
   }
   render(){
-    const { item, fetching } = this.state;
+    const { item, fetching, image } = this.state;
     if(fetching) { return <Spinner /> };
     if(!item) {return ( <span>Nothing Selected</span> )}
     const {id,name,gender,eyeColor,birthYear} = item;
     return (
       <div className="person-details card">
         <img className="person-image"
-          src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
+          src={image} />
 
         <div className="card-body">
           <h4>{name}</h4>
