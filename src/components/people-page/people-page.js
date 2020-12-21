@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './people-page.css';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi-service';
 import ErrorButton from '../error-button';
 import ErrorBoundry from '../error-boundry';
@@ -25,7 +25,7 @@ export default class PeoplePage extends Component{
                           getData = {this.api.getAllPeople}
                           entity = 'Person'
                           renderLabel={this.renderLabel}/>;
-    const itemDetails =  <PersonDetails
+    const itemDetails =  <ItemDetails
     itemId={this.state.selectedPersonId}
     getData={this.api.getPerson}
     getImageUrl={this.api.getPersonImage}/>

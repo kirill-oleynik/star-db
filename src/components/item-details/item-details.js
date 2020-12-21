@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './person-details.css';
+import './item-details.css';
 import Spinner from '../spinner';
 import ErrorBoundry from '../error-boundry';
 import ErrorButton from '../error-button';
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
   constructor(){
     super();
   }
