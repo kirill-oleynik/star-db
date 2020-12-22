@@ -14,7 +14,7 @@ export default class ItemDetails extends Component {
     fetching: false,
     image: null
   };
-  updatePerson(){
+  updateItem(){
     const {itemId, getData, getImageUrl} = this.props;
     if(!itemId) { return };
     this.setState({ fetching: true });
@@ -24,11 +24,11 @@ export default class ItemDetails extends Component {
       });
   }
   componentDidMount(){
-    this.updatePerson();
+    this.updateItem();
   }
   componentDidUpdate(prevProps, prevState){
     if(prevProps.itemId !== this.props.itemId){
-      this.updatePerson();
+      this.updateItem();
     }
     if(this.state.fetching == prevState.fetching) { return; }
   }
