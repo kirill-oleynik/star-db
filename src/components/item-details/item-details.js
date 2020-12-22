@@ -3,6 +3,7 @@ import './item-details.css';
 import Spinner from '../spinner';
 import ErrorBoundry from '../error-boundry';
 import ErrorButton from '../error-button';
+import ItemField from '../item-field';
 
 export default class ItemDetails extends Component {
   constructor(){
@@ -35,27 +36,17 @@ export default class ItemDetails extends Component {
     const { item, fetching, image } = this.state;
     if(fetching) { return <Spinner /> };
     if(!item) {return ( <span>Nothing Selected</span> )}
-    const {id,name,gender,eyeColor,birthYear} = item;
     return (
       <div className="person-details card">
         <img className="person-image"
           src={image} />
 
         <div className="card-body">
-          <h4>{name}</h4>
+          <h4>{item.name}</h4>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Gender</span>
-              <span>{gender}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Birth Year</span>
-              <span>{birthYear}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Eye Color</span>
-              <span>{eyeColor}</span>
-            </li>
+      <ItemField item={item} field={'gender'} label={'Gender'} />
+      <ItemField item={item} field={'birthYear'} label={'Birth Year'} />
+      <ItemField item={item} field={'eyeColor'} label={'Eye Color'} />
           </ul>
       <ErrorButton />
         </div>
