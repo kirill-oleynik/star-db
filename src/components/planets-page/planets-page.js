@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './planets-page.css';
 import ItemList from '../item-list';
-import PlanetDetails from '../planet-details';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
+import ItemDetails from '../item-details';
 
 export default class PlanetsPage extends Component{
   api = new SwapiService();
@@ -24,9 +24,10 @@ export default class PlanetsPage extends Component{
         getData={this.api.getAllPlanets}
         renderLabel={this.renderLabel}
         entity='Planet'/>;
-    const itemDetails =  <PlanetDetails
-    entityId={selectedItemId}
-    getData={this.api.getPlanet} />;
+    const itemDetails =  <ItemDetails
+    itemId={selectedItemId}
+    getData={this.api.getPlanet}
+    getImageUrl={this.api.getPlanetImage}/>
 
 
     return(
