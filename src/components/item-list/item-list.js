@@ -1,46 +1,30 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import './item-list.css';
-import Spinner from '../spinner';
 import ErrorBoundry from '../error-boundry';
-
-export default class ItemList extends Component {
-  state = {
-    itemList: null
-  };
-  componentDidMount(){
-    this.props.getData()
-      .then((itemList)=>{
-        this.setState({ itemList })
-      })
-  }
-  renderItem =(item) => {
-    const label = this.props.renderLabel(item);
+import withDataHOC from '../with-data-hoc';
+const ItemList = (props) => {
+  const renderItem = (item) => {
+    const label = props.renderLabel(item);
     const {id,name} = item;
     return(
-        <li
+    <li
       key={id}
-      className="list-group-item"
-      onClick={()=>{this.props.onSelectItem(id)}}
-      >
+      className='list-group-item'
+      onClick={() => {props.onSelectItem(id)}}
+    >
       {label}
-        </li>
-
+      </li>
     );
-  }
-  render() {
-    const {itemList} = this.state;
-    const{entity} = this.props;
-    if(!itemList){ return <Spinner /> }
-    const data = itemList.map(this.renderItem);
+  };
+  const {data, entity} = props;
+    const itemList = data.map(renderItem);
     return (
-      <Fragment>
       <ErrorBoundry>
       <h4>Select {entity} :</h4>
       <ul className="item-list list-group">
-      {data}
+      {itemList}
      </ul>
       </ErrorBoundry>
-      </Fragment>
     );
-  }
-}
+};
+export default withDataHOC(ItemList);
