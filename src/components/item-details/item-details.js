@@ -3,7 +3,6 @@ import './item-details.css';
 import Spinner from '../spinner';
 import ErrorBoundry from '../error-boundry';
 import ErrorButton from '../error-button';
-import ItemField from '../item-field';
 
 export default class ItemDetails extends Component {
   constructor(){
@@ -36,6 +35,10 @@ export default class ItemDetails extends Component {
     const { item, fetching, image } = this.state;
     if(fetching) { return <Spinner /> };
     if(!item) {return ( <span>Nothing Selected</span> )}
+    const itemFields = React.Children.map(
+    this.props.children,
+      (child) => (React.cloneElement(child, {item}))
+    );
     return (
       <div className="person-details card">
         <img className="person-image"
@@ -44,9 +47,7 @@ export default class ItemDetails extends Component {
         <div className="card-body">
           <h4>{item.name}</h4>
           <ul className="list-group list-group-flush">
-      <ItemField item={item} field={'gender'} label={'Gender'} />
-      <ItemField item={item} field={'birthYear'} label={'Birth Year'} />
-      <ItemField item={item} field={'eyeColor'} label={'Eye Color'} />
+      { itemFields }
           </ul>
       <ErrorButton />
         </div>
