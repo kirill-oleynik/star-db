@@ -26,7 +26,7 @@ export default class RandomPlanet extends Component {
   }
   _onError = (error) => { this.setState({ error: true, loading: false }) }
   planetId(max){
-    return Math.floor(Math.random() * Math.floor(max));
+    return Math.floor(Math.random() * Math.floor(max))+1;
   }
   updatePlanet = () => {
     const id = this.planetId(20);
