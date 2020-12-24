@@ -29,4 +29,4 @@ const withDataHOC = (View) => {
     };
   };
 };
-export default withDataHOC;
+export {withDataHOC};
