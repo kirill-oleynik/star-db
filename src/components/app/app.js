@@ -10,6 +10,8 @@ import PeoplePage from '../people-page';
 import PlanetsPage from '../planets-page';
 import StarshipsPage from '../starships-page';
 import ErrorBoundry from '../error-boundry';
+import {PersonList,PlanetList,StarshipList} from '../sw-components';
+import {PersonDetails,PlanetDetails,StarshipDetails} from '../sw-components';
 
 export default class App extends Component {
   // }
