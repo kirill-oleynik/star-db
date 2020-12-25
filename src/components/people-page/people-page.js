@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import './people-page.css';
-import {PersonList} from '../sw-components';
+import {PersonList,PersonDetails} from '../sw-components';
+// import {PersonList} from '../sw-components';
 import ItemDetails from '../item-details';
-import SwapiService from '../../services/swapi-service';
+// import SwapiService from '../../services/swapi-service';
 import ErrorButton from '../error-button';
 import ErrorBoundry from '../error-boundry';
 import ItemField from '../item-field';
 import Row from '../row';
 export default class PeoplePage extends Component{
-  api = new SwapiService();
+  // api = new SwapiService();
   state={
     slectedPersonId: null
   };
@@ -25,14 +26,15 @@ export default class PeoplePage extends Component{
                           onSelectItem={this.onSelectItem}
                           entity = 'Person'
                           renderLabel={this.renderLabel}/>;
-    const itemDetails =  <ItemDetails
-    itemId={this.state.selectedPersonId}
-    getData={this.api.getPerson}
-    getImageUrl={this.api.getPersonImage}>
-      <ItemField field={'gender'} label={'Gender'} />
-      <ItemField field={'birthYear'} label={'Birth Year'} />
-      <ItemField field={'eyeColor'} label={'Eye Color'} />
-      </ItemDetails>
+    // const itemDetails =  <ItemDetails
+    // itemId={this.state.selectedPersonId}
+    // getData={this.api.getPerson}
+    // getImageUrl={this.api.getPersonImage}>
+    //   <ItemField field={'gender'} label={'Gender'} />
+    //   <ItemField field={'birthYear'} label={'Birth Year'} />
+    //   <ItemField field={'eyeColor'} label={'Eye Color'} />
+    //   </ItemDetails>
+    const itemDetails = <PersonDetails itemId={11} />;
 
 
       return(
