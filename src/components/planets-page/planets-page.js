@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './planets-page.css';
-import ItemList from '../item-list';
+import {PlanetList} from '../sw-components';
 import SwapiService from '../../services/swapi-service';
 import ItemField from '../item-field';
 import Row from '../row';
@@ -20,9 +20,8 @@ export default class PlanetsPage extends Component{
   render() {
     const {selectedItemId} = this.state;
 
-    const itemList = <ItemList
+    const itemList = <PlanetList
         onSelectItem={this.onSelectItem}
-        getData={this.api.getAllPlanets}
         renderLabel={this.renderLabel}
         entity='Planet'/>;
     const itemDetails =  <ItemDetails

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './starships-page.css';
-import ItemList from '../item-list';
+import {StarshipList} from '../sw-components';
 import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi-service';
 import ItemField from '../item-field';
@@ -20,9 +20,8 @@ export default class StarshipsPage extends Component {
 
   render(){
 
-    const itemList = <ItemList
+    const itemList = <StarshipList
     onSelectItem={this.onSelectItem}
-    getData = {this.api.getAllStarships}
     renderLabel={this.renderLabel}
     entity = 'Starship' />;
     const itemDetails =  <ItemDetails

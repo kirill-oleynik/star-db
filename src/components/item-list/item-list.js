@@ -1,7 +1,6 @@
 import React from 'react';
 import './item-list.css';
 import ErrorBoundry from '../error-boundry';
-import {withDataHOC} from '../hoc-helpers';
 const ItemList = (props) => {
   const renderItem = (item) => {
     const label = props.renderLabel(item);
@@ -27,4 +26,4 @@ const ItemList = (props) => {
       </ErrorBoundry>
     );
 };
-export default withDataHOC(ItemList);
+export default ItemList;

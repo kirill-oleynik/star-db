@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import Spinner from '../spinner';
 
-const withDataHOC = (View) => {
+const withDataHOC = (View, getData) => {
   return class extends Component{
   state = {
     data: null
   };
   componentDidMount(){
-    this.props.getData()
+    getData()
       .then((data)=>{
         this.setState({ data })
       })

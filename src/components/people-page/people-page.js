@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './people-page.css';
-import ItemList from '../item-list';
+import {PersonList} from '../sw-components';
 import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi-service';
 import ErrorButton from '../error-button';
@@ -21,9 +21,8 @@ export default class PeoplePage extends Component{
 
   render(){
 
-      const itemList = <ItemList
+      const itemList = <PersonList
                           onSelectItem={this.onSelectItem}
-                          getData = {this.api.getAllPeople}
                           entity = 'Person'
                           renderLabel={this.renderLabel}/>;
     const itemDetails =  <ItemDetails
