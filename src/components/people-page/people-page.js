@@ -18,7 +18,6 @@ export default class PeoplePage extends Component{
       const itemList = <PersonList
                           onSelectItem={this.onSelectItem}
                           entity = 'Person'>
-                          {({name}) => (<span>{name}</span>)}
                         </PersonList>;
     const itemDetails = <PersonDetails itemId={this.state.selectedItemId} />;
 

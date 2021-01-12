@@ -17,7 +17,6 @@ export default class StarshipsPage extends Component {
     const itemList = <StarshipList
     onSelectItem={this.onSelectItem}
     entity = 'Starship' >
-                          {({name}) => (<span>{name}</span>)}
     </StarshipList>;
     const itemDetails = <StarshipDetails itemId={this.state.selectedItemId} />;
       return(

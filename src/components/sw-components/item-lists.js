@@ -1,6 +1,6 @@
 import React from 'react';
 import SwapiService from '../../services/swapi-service';
-import itemList from '../item-list';
+import ItemList from '../item-list';
 import {withDataHOC} from '../hoc-helpers';
 const {
   getAllPeople,
@@ -8,9 +8,30 @@ const {
   getAllStarships
 } = new SwapiService();
 
-const PersonList = withDataHOC(itemList,getAllPeople);
-const PlanetList = withDataHOC(itemList,getAllPlanets);
-const StarshipList = withDataHOC(itemList,getAllStarships);
+const withChildFunc = (Wrapped,fn) =>{
+  return (props) => {
+    return(
+    <Wrapped {...props}>
+      {fn}
+      </Wrapped>
+    );
+  };
+};
+    const renderName = ({name}) => (<span>{name}</span>);
+    const renderNameAndModel = ({name,model}) => (<span>{name } ({model})</span>);
+
+const PersonList = withDataHOC(
+  withChildFunc(ItemList, renderName),
+  getAllPeople
+);
+const PlanetList = withDataHOC(
+  withChildFunc(ItemList, renderName),
+  getAllPlanets
+);
+const StarshipList = withDataHOC(
+  withChildFunc(ItemList, renderNameAndModel),
+  getAllStarships
+);
 
 export{
   PersonList,
