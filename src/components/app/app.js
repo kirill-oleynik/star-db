@@ -11,9 +11,11 @@ import PlanetsPage from '../planets-page';
 import StarshipsPage from '../starships-page';
 import ErrorBoundry from '../error-boundry';
 import {PersonList,PlanetList,StarshipList} from '../sw-components';
-import {PersonDetails,PlanetDetails,StarshipDetails} from '../sw-components';
+import {SwapiServiceProvider} from '../swapi-service-context';
+import SwapiService from '../../services/swapi-service';
 
 export default class App extends Component {
+  swapiService = new SwapiService();
   // }
   state  = {
     randomPlanetVisible:true,
@@ -32,6 +34,7 @@ export default class App extends Component {
   render() {
     const { randomPlanetVisible } = this.state;
    return(
+     <SwapiServiceProvider value={this.swapiService}>
      <ErrorBoundry>
     <div id='Application'>
       <Header />
@@ -46,6 +49,7 @@ export default class App extends Component {
      <StarshipsPage />
     </div>
      </ErrorBoundry>
+     </SwapiServiceProvider>
   );
   }
 }

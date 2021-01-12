@@ -1,20 +1,13 @@
 import React from 'react';
-import SwapiService from '../../services/swapi-service';
 import ItemDetails from '../item-details';
 import ItemField from '../item-field';
-
-const {
-  getPerson,
-  getPlanet,
-  getStarship,
-  getPersonImage,
-  getPlanetImage,
-  getStarshipImage
-} = new SwapiService();
-
+import {SwapiServiceConsumer} from '../swapi-service-context';
 
 const PersonDetails = ({itemId}) => {
   return(
+  <SwapiServiceConsumer>
+    { ({getPerson,getPersonImage}) => {
+      return(
   <ItemDetails
     itemId={itemId}
     getData={getPerson}
@@ -23,10 +16,17 @@ const PersonDetails = ({itemId}) => {
       <ItemField field={'birthYear'} label={'Birth Year'} />
       <ItemField field={'eyeColor'} label={'Eye Color'} />
       </ItemDetails>
+      );
+    } }
+    </SwapiServiceConsumer>
   );
 };
 const PlanetDetails = ({itemId}) => {
   return(
+  <SwapiServiceConsumer>
+    {
+      ({ getPlanet,getPlanetImage }) => {
+        return(
   <ItemDetails
     itemId={itemId}
     getData={getPlanet}
@@ -35,10 +35,19 @@ const PlanetDetails = ({itemId}) => {
       <ItemField field={'diameter'} label={'Diameter'} />
       <ItemField field={'rotationPeriod'} label={'Rotation Period'} />
       </ItemDetails>
+        );
+      }
+    }
+  </SwapiServiceConsumer>
   );
 };
 const StarshipDetails = ({itemId}) => {
   return(
+  <SwapiServiceConsumer>
+    {
+      ({getStarship,getStarshipImage}) => {
+        return(
+
   <ItemDetails
     itemId={itemId}
     getData={getStarship}
@@ -51,6 +60,14 @@ const StarshipDetails = ({itemId}) => {
         <ItemField field={'costInCredits'} label={'Cost in Credits'} />
         <ItemField field={'cargoCapacity'} label={'Cargo Capacity'} />
 </ItemDetails>
+
+
+
+
+        );
+      }
+    }
+    </SwapiServiceConsumer>
   );
 };
 export{
