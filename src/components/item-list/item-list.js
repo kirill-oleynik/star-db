@@ -3,7 +3,7 @@ import './item-list.css';
 import ErrorBoundry from '../error-boundry';
 const ItemList = (props) => {
   const renderItem = (item) => {
-    const label = props.renderLabel(item);
+    const label = props.children(item);
     const {id,name} = item;
     return(
     <li

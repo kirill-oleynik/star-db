@@ -17,6 +17,7 @@ const withDataHOC = (View, getData) => {
 
 
     render(){
+      console.log(this.props);
 
     const {data} = this.state;
     const{entity} = this.props;
