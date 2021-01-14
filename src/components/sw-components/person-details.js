@@ -1,11 +1,10 @@
 import React from 'react';
 import ItemDetails from '../item-details';
 import ItemField from '../item-field';
-import {SwapiServiceConsumer} from '../swapi-service-context';
-const PersonDetails = ({itemId}) => {
-  return(
-  <SwapiServiceConsumer>
-    { ({getPerson,getPersonImage}) => {
+import {withSwapiService} from '../hoc-helpers';
+
+const PersonDetails = ({itemId,swapiService}) => {
+  const{getPerson,getPersonImage} = swapiService;
       return(
   <ItemDetails
     itemId={itemId}
@@ -16,8 +15,5 @@ const PersonDetails = ({itemId}) => {
       <ItemField field={'eyeColor'} label={'Eye Color'} />
       </ItemDetails>
       );
-    } }
-    </SwapiServiceConsumer>
-  );
 };
-export {PersonDetails};
+export default withSwapiService(PersonDetails);

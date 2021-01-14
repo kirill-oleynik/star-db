@@ -26,4 +26,4 @@ const StarshipDetails = ({itemId}) => {
     </SwapiServiceConsumer>
   );
 };
-export{StarshipDetails};
+export default StarshipDetails;

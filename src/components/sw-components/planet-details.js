@@ -22,4 +22,4 @@ const PlanetDetails = ({itemId}) => {
   </SwapiServiceConsumer>
   );
 };
-export{PlanetDetails};
+export default PlanetDetails;

@@ -1,2 +1,2 @@
-import {withDataHOC} from './with-data-hoc';
-export { withDataHOC};
+export * from './with-data-hoc';
+export * from './with-swapi-service';
