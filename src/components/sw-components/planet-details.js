@@ -1,7 +1,6 @@
 import React from 'react';
 import ItemDetails from '../item-details';
 import ItemField from '../item-field';
-import {SwapiServiceConsumer} from '../swapi-service-context';
 import {withSwapiService} from '../hoc-helpers';
 
 const PlanetDetails = (props) => (
